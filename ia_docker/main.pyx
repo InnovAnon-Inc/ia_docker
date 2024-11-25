@@ -6,6 +6,7 @@
 
 import asyncio
 import os
+from pathlib                                 import Path
 from typing                                  import List, Optional, Iterable
 
 import dotenv
@@ -23,9 +24,10 @@ def main(srcpath:Optional[Path]=None,)->None:
 
 	if (srcpath is None):
 		srcpath:Path          = Path()
+	assert srcpath.is_dir()
 
 	logger.info('building')
-	docker.build()
+	docker.build(srcpath,)
 
 	mode           :Optional[str] = os.getenv('IA_DOCKER', None)
 	logger.info('mode: %s', mode,)
