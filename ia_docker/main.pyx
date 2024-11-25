@@ -18,13 +18,16 @@ logger           = get_logger()
 #
 ##
 
-def main()->None:
+def main(srcpath:Optional[Path]=None,)->None:
 	dotenv.load_dotenv()
+
+	if (srcpath is None):
+		srcpath:Path          = Path()
 
 	logger.info('building')
 	docker.build()
 
-	mode:Optional[str] = os.getenv('IA_DOCKER', None)
+	mode           :Optional[str] = os.getenv('IA_DOCKER', None)
 	logger.info('mode: %s', mode,)
 	if (mode == 'RUN'):
 		logger.info('running')
