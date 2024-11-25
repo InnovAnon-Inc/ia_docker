@@ -1,3 +1,3 @@
-docker-on-whales
+python-on-whales
 #rich
 structlog
