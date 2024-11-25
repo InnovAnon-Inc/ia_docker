@@ -32,7 +32,7 @@ def main()->None:
 	elif (mode == 'UP'):
 		logger.info('up')
 		docker.compose.up()
-	else assert (mode is None), mode
+	else: assert (mode is None), mode
 
 if __name__ == '__main__':
 	main()
