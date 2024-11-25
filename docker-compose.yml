@@ -1,0 +1,10 @@
+services:
+  ia_docker:
+    hostname:         ia_docker.innovanon.com
+    build:
+      context:        .
+      tags:
+        - ia_docker:latest
+    restart:          no
+    logging:
+      driver:         syslog   
