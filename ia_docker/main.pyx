@@ -20,24 +20,34 @@ logger           = get_logger()
 ##
 
 def main(srcpath:Optional[Path]=None,)->None:
+	assert docker.compose.is_installed()
 	dotenv.load_dotenv()
 
 	if (srcpath is None):
 		srcpath:Path          = Path()
 	assert srcpath.is_dir()
+	logger.info('src path: %s', srcpath.resolve(),)
 
-	logger.info('building: %s', srcpath.resolve(),)
-	docker.build(srcpath,)
+	_name          :str           = srcpath.resolve().name
+	logger.debug('_name   : %s', _name,)
 
-	name:str = srcpath.resolve().name
+	logger.info('building: %s', _name,)
+	#docker.compose.build(_name,)
+	docker.compose.build(services=None, pull=True,)
+
+	#name                          = str(f'innovanon/{_name}')
+	name                          = _name
+	logger.debug('name    : %s', name,)
+
 	logger.info('pushing : %s', name,)
-	docker.push(name,)
+	#docker.compose.push(services=[name,],)
+	docker.compose.push(services=None,)
 
 	mode           :Optional[str] = os.getenv('IA_DOCKER', None)
 	logger.info('mode    : %s', mode,)
 	if (mode == 'RUN'):
 		logger.info('running')
-		docker.run()
+		docker.compose.run()
 	elif (mode == 'UP'):
 		logger.info('up')
 		docker.compose.up()
