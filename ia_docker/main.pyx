@@ -26,7 +26,7 @@ def main(srcpath:Optional[Path]=None,)->None:
 		srcpath:Path          = Path()
 	assert srcpath.is_dir()
 
-	logger.info('building')
+	logger.info('building: %s', srcpath.resolve(),)
 	docker.build(srcpath,)
 
 	docker.push()
