@@ -29,6 +29,8 @@ def main(srcpath:Optional[Path]=None,)->None:
 	logger.info('building')
 	docker.build(srcpath,)
 
+	docker.push()
+
 	mode           :Optional[str] = os.getenv('IA_DOCKER', None)
 	logger.info('mode: %s', mode,)
 	if (mode == 'RUN'):
