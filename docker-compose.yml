@@ -8,6 +8,7 @@ services:
         -           ia_docker:latest
         - innovanon/ia_docker
         -           ia_docker
+    image:            innovanon/ia_docker
     restart:          no
     logging:
       driver:         syslog   
