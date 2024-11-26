@@ -29,10 +29,12 @@ def main(srcpath:Optional[Path]=None,)->None:
 	logger.info('building: %s', srcpath.resolve(),)
 	docker.build(srcpath,)
 
-	docker.push()
+	name:str = srcpath.resolve().name
+	logger.info('pushing : %s', name,)
+	docker.push(name,)
 
 	mode           :Optional[str] = os.getenv('IA_DOCKER', None)
-	logger.info('mode: %s', mode,)
+	logger.info('mode    : %s', mode,)
 	if (mode == 'RUN'):
 		logger.info('running')
 		docker.run()
