@@ -5,6 +5,9 @@ services:
       context:        .
       tags:
         - innovanon/ia_docker:latest
+        -           ia_docker:latest
+        - innovanon/ia_docker
+        -           ia_docker
     restart:          no
     logging:
       driver:         syslog   
