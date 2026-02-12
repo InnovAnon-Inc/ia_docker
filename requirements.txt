@@ -1,0 +1,6 @@
+tomllib
+setuptools
+Cython
+docker
+dockerfile_parse
+python_on_whales
