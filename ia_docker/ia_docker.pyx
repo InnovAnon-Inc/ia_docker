@@ -64,7 +64,6 @@ def enable_in_memory_dockerfiles() -> None: # NOTE is docker, not pytnon_on_whal
     docker.api.build.process_dockerfile = _enable_in_memory_dockerfiles
 
 def generate_dockerfile(dockerfile:Path)->None: # TODO typehint
-    import dockerfile_parse
     #from dockerfile_parse import DockerfileParser
     # TODO
     raise NotImplementedError()
@@ -80,7 +79,6 @@ def generate_dockerfile_if_not_exists(dockerfile:Path)->bool: # TODO typehint
     return True
 
 def generate_docker_compose(docker_compose:Path)->None: # TODO typehint
-    import python_on_whales
     # TODO
     #privileged: true
     #pid: host
